@@ -5,7 +5,7 @@ import App from './App.jsx';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
-import reducers from './reducer';
+import reducers from './reducers/index.js';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 const store = configureStore({
@@ -30,7 +30,10 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId="733197338050-8mjf6itbc751aceoq3819h95dd9stkqt.apps.googleusercontent.com"  onScriptLoadError={(e) => console.log(e)}>
+    <GoogleOAuthProvider
+      
+      clientId="733197338050-8mjf6itbc751aceoq3819h95dd9stkqt.apps.googleusercontent.com" onScriptLoadError={(e) => console.log(e,"error")}>
+      
       <Provider store={store}>
       <ThemeProvider theme={theme}>
       <App />

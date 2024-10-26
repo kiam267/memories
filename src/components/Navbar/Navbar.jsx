@@ -5,17 +5,45 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
-import { Link, json } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // Metarial UI Styles
 import useStyles from './styles';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const [user, setUset] = useState(
+  const navigate = useNavigate();
+
+  const userData = useSelector(
+    state => state.auth.authData
+  ); // Corrected the key
+
+  const [user, setUser] = useState(
     JSON.parse(localStorage.getItem('profile'))
   );
+
+  useEffect(() => {
+    if (userData) {
+      setUser(userData);
+      navigate('/');
+    }
+  }, [userData, navigate]);
+
+  // useEffect(() => {
+  //   const storedProfile = localStorage.getItem('profile');
+  //   if (storedProfile) {
+  //     setUser(JSON.parse(storedProfile));
+  //   }
+  // }, []);
+
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' });
+    navigate('/');
+    setUser(null);
+  };
 
   return (
     <AppBar
@@ -43,24 +71,28 @@ const Navbar = () => {
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
-            <Avatar
-              className={classes.purple}
-              alt={user.result.name}
-              src={user.result.imageUrl}
-            >
-              {user.result.name.charAt(0)}
-            </Avatar>
-            <Typography
-              className={classes.title}
-              variant="h6"
-              align="center"
-            >
-              {user.result.name}
-            </Typography>
+            <div className={classes.user}>
+              <Avatar
+                className={classes.purple}
+                alt={user.user.name}
+                src={user.user.picture}
+              >
+                {user.user.name.charAt(0)}
+              </Avatar>
+              <Typography
+                className={classes.title}
+                variant="h6"
+                align="center"
+              >
+                {user.user.name}
+              </Typography>
+            </div>
+
             <Button
               variant="contained"
               className={classes.logout}
               color="secondary"
+              onClick={logout}
             >
               Logout
             </Button>

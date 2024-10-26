@@ -13,9 +13,8 @@ import Auth from './components/Auth/Auth';
 function App() {
   return (
     <Container maxWidth="lg">
-      <Navbar />
-
       <BrowserRouter>
+          <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />

@@ -6,13 +6,13 @@ export default makeStyles(theme => ({
     borderRadius: 15,
     margin: '30px 0',
     display: 'flex',
-    flexDirection: 'row',
+    // flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   flexDirection: 'column',
+    // },
   },
   heading: {
     color: theme.palette.primary.main,
@@ -21,7 +21,7 @@ export default makeStyles(theme => ({
     fontWeight: 300,
   },
   image: {
-    marginLeft: '10px',
+    marginLeft: '3px',
     marginTop: '5px',
   },
   toolbar: {
@@ -32,9 +32,14 @@ export default makeStyles(theme => ({
       width: 'auto',
     },
   },
+  user: {
+    display: 'flex',
+    gap: '5px ',
+    alignItems: 'center',
+  },
   profile: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     width: '400px',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
@@ -53,6 +58,7 @@ export default makeStyles(theme => ({
   },
   brandContainer: {
     display: 'flex',
+
     alignItems: 'center',
   },
   purple: {

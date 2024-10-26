@@ -10,25 +10,75 @@ import {
 } from '@mui/material';
 import { GoogleLogin } from '@react-oauth/google';
 
-import { LockOutlined, Password } from '@mui/icons-material';
+import {
+  LockOutlined,
+  Password,
+} from '@mui/icons-material';
+import {
+  useNavigate,
+  useNavigation,
+} from 'react-router-dom';
 
 // Metarial UI Styles
 import useStyles from './styles';
 import Input from './Input';
+import { jwtDecoder } from '../../lib/jwt-decoder';
+import { useDispatch, useSelector } from 'react-redux';
+import { signin, signup } from '../../actions/auth';
 
 const Auth = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const initialState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
 
+  const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
-
   const switchMode = () => {
     setShowPassword(false);
     setIsSignUp(prevIsSignUp => !prevIsSignUp);
   };
- 
-  const handelSubmit = () => {};
-  const hadelChange = () => {};
+
+  const handelSubmit = e => {
+    e.preventDefault();
+    if (isSignUp) {
+      dispatch(signup(formData, navigate));
+    } else {
+      
+      dispatch(signin(formData, navigate));
+    }
+  };
+  const hadelChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const googleSuccess = async e => {
+    const { credential } = e;
+    const user = jwtDecoder(credential);
+
+    try {
+      dispatch({
+        type: 'AUTH',
+        data: { user, token: credential },
+      });
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const googleFailure = () => {
+    console.log('Google sign in was unsuccessful.');
+  };
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={6}>
@@ -38,7 +88,10 @@ const Auth = () => {
         <Typography variant="h5">
           {isSignUp ? 'Sign Up' : ' Sign in'}
         </Typography>
-        <form className={classes.form} onSubmit={handelSubmit}>
+        <form
+          className={classes.form}
+          onSubmit={handelSubmit}
+        >
           <Grid container className="my-5" spacing={2}>
             {isSignUp && (
               <>
@@ -70,19 +123,19 @@ const Auth = () => {
             hadelChange={hadelChange}
             type={showPassword ? 'password' : 'text'}
             handelShowPassword={() =>
-              setShowPassword(prevShowPassword => !prevShowPassword)
+              setShowPassword(
+                prevShowPassword => !prevShowPassword
+              )
             }
           />
           <GoogleLogin
-            
             onSuccess={credentialResponse => {
+              googleSuccess(credentialResponse);
               console.log(credentialResponse);
             }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
+            onError={googleFailure}
           />
-          ;
+
           {isSignUp && (
             <Input
               name="confirmPassword"
@@ -91,21 +144,21 @@ const Auth = () => {
               type="password"
             />
           )}
-          {isSignUp && (
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={`${classes.submit} mt-5`}
-            >
-              {isSignUp ? 'Sign Up' : 'Sign In'}
-            </Button>
-          )}
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={`${classes.submit} mt-5`}
+          >
+            {isSignUp ? 'Sign Up' : 'Sign In'}
+          </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
-                {isSignUp ? 'Already have an account ? Sign In ' : ' Sign Up'}
+                {isSignUp
+                  ? 'Already have an account ? Sign In '
+                  : ' Sign Up'}
               </Button>
             </Grid>
           </Grid>
