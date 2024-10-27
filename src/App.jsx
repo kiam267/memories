@@ -7,14 +7,15 @@ import {
 
 //Component Imports
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
+import Home from './page/Home/Home';
 import Auth from './components/Auth/Auth';
+import Header from '../src/layout/Header';
 
 function App() {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <BrowserRouter>
-          <Navbar />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />

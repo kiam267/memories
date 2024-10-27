@@ -4,15 +4,14 @@ import { deepPurple } from '@mui/material/colors';
 export default makeStyles(theme => ({
   appBar: {
     borderRadius: 15,
-    margin: '30px 0',
     display: 'flex',
-    // flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    // [theme.breakpoints.down('sm')]: {
-    //   flexDirection: 'column',
-    // },
+    [theme.breakpoints.down('lg')]: {
+      display: 'none',
+    },
   },
   heading: {
     color: theme.palette.primary.main,
