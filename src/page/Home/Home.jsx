@@ -6,14 +6,14 @@ import React, { useState } from 'react';
 
 // Metarial UI Styles
 
-
 //React Redux
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getPosts } from '../../actions/posts';
 
-
 import Hero from '../../features/Home/components/Hero';
+import Service from '../../features/Home/components/Service';
+import { Container, Grid } from '@mui/material';
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(null);
@@ -46,7 +46,12 @@ const Home = () => {
     // </Grow>
 
     <main>
-      <Hero />
+      <Container
+        maxWidth="xl"
+      >
+        <Hero />
+        <Service />
+      </Container>
     </main>
   );
 };
