@@ -21,6 +21,7 @@ export const Button = styled(MuiButton)(({ theme }) => ({
   whiteSpace: 'nowrap',
   transition: 'transform 0.2s ease',
 
+
   '&:focus': {
     textDecoration: 'none',
   },

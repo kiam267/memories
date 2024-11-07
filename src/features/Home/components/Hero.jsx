@@ -15,6 +15,7 @@ function Hero() {
         variant="h1"
         className={classes.text}
         sx={{
+          fontSize: '5rem',
           fontWeight: 'bold',
           [theme.breakpoints.down('md')]: {
             fontSize: '3rem',
@@ -31,7 +32,6 @@ function Hero() {
           src="./src/assets/icons/arrow.png"
           alt="arrow"
         />
-
         <div
           style={{
             marginTop: '20px',
@@ -46,6 +46,7 @@ function Hero() {
             style={{
               width: '100%',
               height: '100%',
+              maxHeight: '550px',
               objectFit: 'cover',
               borderRadius: '20px',
             }}
@@ -53,14 +54,26 @@ function Hero() {
         </div>
       </Box>
 
-      <div>
+      <div
+        style={{
+          margin: '30px 0px',
+        }}
+      >
         <Link
           to="/auth"
           style={{
             color: 'white',
           }}
         >
-          <Button>let's go</Button>
+          <Button
+            size="small"
+            sx={{
+              height: '40px',
+              width: '300px',
+            }}
+          >
+            let's go
+          </Button>
         </Link>
       </div>
     </div>

@@ -25,29 +25,9 @@ const Home = () => {
   }, []);
 
   return (
-    // <Grow in>
-    //   <Container>
-
-    //     {/* <Grid
-    //       className={classes.mainContainer}
-    //       container
-    //       justifyContent="space-between"
-    //       alignItems="stretch"
-    //       spacing="1"
-    //     >
-    //       <Grid item xs={12} sm={6}>
-    //         <Posts setCurrentId={setCurrentId} />
-    //       </Grid>
-    //       <Grid item xs={12} sm={5}>
-    //         <Form currentId={currentId} setCurrentId={setCurrentId} />
-    //       </Grid>
-    //     </Grid> */}
-    //   </Container>
-    // </Grow>
-
     <main>
       <Container
-        maxWidth="xl"
+        maxWidth="lg"
       >
         <Hero />
         <Service />

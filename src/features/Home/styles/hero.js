@@ -28,11 +28,8 @@ export default makeStyles(theme => ({
 
   imageArrow: {
     position: 'absolute',
-    // width: '150px',
-    // height: '150px',
     width: '20%',
     top: '5%',
-    // right: '-18%',
     right: '-26%',
     transform: 'translate(-50%, -50%) rotate(-11deg)',
   },

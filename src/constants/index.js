@@ -26,11 +26,9 @@ export const services = [
     id: 1,
     title: 'High Resolution Images',
     description: `We provide high-resolution images for easy viewing. Our customizable system allows you to edit your images, and we also offer high-resolution image downloads.`,
-    image: './src/assets/icons/display.png',
+    image: './src/assets/img/ai-man.webp',
     style: {
-      // gridRow: '1',
-      width: 600,
-      height: 450,
+      height: 350,
     },
   },
   {
@@ -40,8 +38,8 @@ export const services = [
 
     image: './src/assets/icons/secure.png',
     style: {
-      width: 400,
-      height: 450,
+      // width: 400,
+      height: 350,
     },
   },
   {
@@ -62,18 +60,8 @@ export const services = [
 
     image: './src/assets/gif/editing-cutting-video.gif',
     style: {
-      height: 750,
-      width: 990,
+      height: 350,
+      width: 800,
     },
   },
-  // {
-  //   id: 5,
-  //   title: 'High Secure',
-  //   description: `Our team is dedicated to security and prioritizes the protection of user data. We implement SHA-3 encryption to ensure robust security for our users. Additionally, we use end-to-end data transfer, which safeguards information throughout its journey. Our dual-storage system offers extra protection, ensuring that user data remains safe and intact.`,
-
-  //   image: './src/assets/icons/secure.png',
-  //   style: {
-  //     gridRow: '2',
-  //   },
-  // },
 ];
