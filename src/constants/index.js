@@ -28,7 +28,9 @@ export const services = [
     description: `We provide high-resolution images for easy viewing. Our customizable system allows you to edit your images, and we also offer high-resolution image downloads.`,
     image: './src/assets/icons/display.png',
     style: {
-      gridRow: '1',
+      // gridRow: '1',
+      width: 600,
+      height: 450,
     },
   },
   {
@@ -38,7 +40,8 @@ export const services = [
 
     image: './src/assets/icons/secure.png',
     style: {
-      gridRow: '1',
+      width: 400,
+      height: 450,
     },
   },
   {
@@ -49,7 +52,7 @@ export const services = [
     image:
       './src/assets/gif/artificial-intelligence-ai-alt.gif',
     style: {
-      gridRow: '1 / span 2',
+      height: 750,
     },
   },
   {
@@ -59,8 +62,8 @@ export const services = [
 
     image: './src/assets/gif/editing-cutting-video.gif',
     style: {
-      gridRow: '2',
-      gridColumn: '1 / span 2',
+      height: 750,
+      width: 990,
     },
   },
   // {

@@ -3,6 +3,7 @@ import {
   Avatar,
   Button,
   Container,
+  Drawer,
   Menu,
   MenuItem,
   Toolbar,
@@ -16,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { navLink } from '../../constants';
 import { pink } from '@mui/material/colors';
+import DashboardLayoutBasic from './Mobile';
 
 const Navbar = () => {
   const classes = useStyles();
@@ -56,10 +58,22 @@ const Navbar = () => {
       navigate('/');
     }
   }, [userData, navigate]);
+  const [drawer, setDrawer] = React.useState(false);
 
+  const toggleDrawer = newOpen => () => {
+    setDrawer(newOpen);
+  };
   return (
     <div className={classes.appBar}>
-      <nav>
+      {/* <div className="">
+        <Button onClick={toggleDrawer(true)}>
+          Open drawer
+        </Button>
+        <Drawer open={drawer} onClose={toggleDrawer(false)}>
+          "kdfoisd"
+        </Drawer>
+      </div> */}
+      {/* <nav>
         <ul
           style={{
             display: 'flex',
@@ -96,7 +110,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-      </nav>
+      </nav> */}
 
       <Toolbar className={classes.toolbar}>
         {user ? (
