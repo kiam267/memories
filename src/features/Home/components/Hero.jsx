@@ -41,7 +41,7 @@ function Hero() {
           }}
         >
           <img
-            src="/src//assets/gif/drag-and-drop.gif"
+            src="/src/assets/gif/drag-and-drop.gif"
             alt="Animated GIF"
             style={{
               width: '100%',

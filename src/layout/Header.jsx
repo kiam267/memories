@@ -15,6 +15,7 @@ function Header() {
         useFlexGap
         sx={{
           justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <div>
@@ -25,6 +26,7 @@ function Header() {
               alignItems: 'center',
               justifyContent: 'center',
               textDecoration: 'none',
+
               gap: '0.3rem',
             }}
           >
